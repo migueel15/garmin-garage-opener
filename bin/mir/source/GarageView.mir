@@ -1,0 +1,233 @@
+[ @file = "/home/miguel/test/garminGarage/source/GarageView.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Graphics,1,14,22]; ]
+import Toybox.Graphics;
+[ @file = "/home/miguel/test/garminGarage/source/GarageView.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [WatchUi,2,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "/home/miguel/test/garminGarage/source/GarageView.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Communications,3,14,28]; ]
+import Toybox.Communications;
+[ @file = "/home/miguel/test/garminGarage/source/GarageView.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [System,4,14,20]; ]
+import Toybox.System;
+[ @file = "/home/miguel/test/garminGarage/source/GarageView.mc"; @line = 5; @symbol_importdef<0> = [Toybox,5,7,13]; @symbol_importdef<1> = [Position,5,14,22]; ]
+import Toybox.Position;
+[ @file = "/home/miguel/test/garminGarage/source/GarageView.mc"; @line = 7; @symbol_classdef = [GarageView,7,6,16]; @symbol_extends<0> = [WatchUi,7,25,32]; @symbol_extends<1> = [View,7,33,37]; ]
+class GarageView extends WatchUi.View {
+    [ @file = "/home/miguel/test/garminGarage/source/GarageView.mc"; @line = 7; ]
+    <init> {
+    }
+    [ @file = "/home/miguel/test/garminGarage/source/GarageView.mc"; @line = 7; ]
+    static
+    <init> {
+    }
+    [ @file = "/home/miguel/test/garminGarage/source/GarageView.mc"; @line = 9; @position = 8; @symbol_vardef = [lat,9,8,11]; ]
+    var lat = null;
+    [ @file = "/home/miguel/test/garminGarage/source/GarageView.mc"; @line = 10; @position = 8; @symbol_vardef = [lon,10,8,11]; ]
+    var lon = null;
+    [ @file = "/home/miguel/test/garminGarage/source/GarageView.mc"; @line = 12; @symbol_functiondef = [initialize,12,13,23]; ]
+    function initialize() as Void {
+_home_miguel_test_garminGarage_source_GarageView_mc_12_26_14_4_start:
+[ "/home/miguel/test/garminGarage/source/GarageView.mc" 13 8 ]
+        symbol [ View %tmp.2 13 8 12 ];
+        %tmp.2 = getv ? :View;
+        symbol [ initialize %tmp.3 13 13 23 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+_home_miguel_test_garminGarage_source_GarageView_mc_12_26_14_4_stop:
+    }
+    [ @file = "/home/miguel/test/garminGarage/source/GarageView.mc"; @line = 16; @symbol_functiondef = [onLayout,16,13,21]; @symbol_param<0> = [dc,16,22,24]; @symbol_param<0>_type<0> = [Dc,16,28,30]; ]
+    function onLayout(dc as Dc) as Void {
+    }
+    [ @file = "/home/miguel/test/garminGarage/source/GarageView.mc"; @line = 19; @symbol_functiondef = [onShow,19,13,19]; ]
+    function onShow() as Void {
+_home_miguel_test_garminGarage_source_GarageView_mc_19_30_21_4_start:
+[ "/home/miguel/test/garminGarage/source/GarageView.mc" 20 8 ]
+        %tmp.1 = self;
+        symbol [ startTracking %tmp.2 20 8 21 ];
+        %tmp.2 = getv function %tmp.1 :startTracking;
+        invoke %tmp.1 %tmp.2();
+_home_miguel_test_garminGarage_source_GarageView_mc_19_30_21_4_stop:
+    }
+    [ @file = "/home/miguel/test/garminGarage/source/GarageView.mc"; @line = 23; @symbol_functiondef = [startTracking,23,13,26]; ]
+    function startTracking() as Void {
+_home_miguel_test_garminGarage_source_GarageView_mc_23_37_29_4_start:
+[ "/home/miguel/test/garminGarage/source/GarageView.mc" 24 8 ]
+        symbol [ System %tmp.1 24 8 14 ];
+        %tmp.1 = getm $.Toybox.System;
+        symbol [ println %tmp.2 24 15 22 ];
+        %tmp.2 = getv function %tmp.1 :println;
+        %tmp.3 = "empezando tracking";
+        invoke %tmp.1 %tmp.2(%tmp.3);
+[ "/home/miguel/test/garminGarage/source/GarageView.mc" 25 8 ]
+        symbol [ Position %tmp.4 25 8 16 ];
+        %tmp.4 = getm $.Toybox.Position;
+        symbol [ enableLocationEvents %tmp.5 25 17 37 ];
+        %tmp.5 = getv function %tmp.4 :enableLocationEvents;
+        symbol [ Position %tmp.6 26 12 20 ];
+        %tmp.6 = getm $.Toybox.Position;
+        symbol [ LOCATION_CONTINUOUS %tmp.7 26 21 40 ];
+        %tmp.7 = getv %tmp.6 :LOCATION_CONTINUOUS;
+        %tmp.8 = self;
+        symbol [ method %tmp.9 27 12 18 ];
+        %tmp.9 = getv function %tmp.8 :method;
+        %tmp.11 = const :onPosition;
+        symbol [ onPosition %tmp.11 27 20 30 const ];
+        %tmp.12 = invoke %tmp.8 %tmp.9(%tmp.11);
+        invoke %tmp.4 %tmp.5(%tmp.7, %tmp.12);
+_home_miguel_test_garminGarage_source_GarageView_mc_23_37_29_4_stop:
+    }
+    [ @file = "/home/miguel/test/garminGarage/source/GarageView.mc"; @line = 31; @symbol_functiondef = [onPosition,31,13,23]; @symbol_param<0> = [info,31,24,28]; @symbol_param<0>_type<0> = [Position,31,32,40]; @symbol_param<0>_type<1> = [Info,31,41,45]; ]
+    function onPosition(info as Position.Info) as Void {
+_home_miguel_test_garminGarage_source_GarageView_mc_31_53_45_4_start:
+[ "/home/miguel/test/garminGarage/source/GarageView.mc" 32 8 ]
+        symbol [ System %tmp.1 32 8 14 ];
+        %tmp.1 = getm $.Toybox.System;
+        symbol [ println %tmp.2 32 15 22 ];
+        %tmp.2 = getv function %tmp.1 :println;
+        %tmp.3 = "llamando onPosition";
+        invoke %tmp.1 %tmp.2(%tmp.3);
+[ "/home/miguel/test/garminGarage/source/GarageView.mc" 33 8 ]
+_home_miguel_test_garminGarage_source_GarageView_mc_33_8_36_8_if_stmt:
+        %tmp.4 = lgetv %info;
+        symbol [ info %tmp.4 33 12 16 ];
+        symbol [ position %tmp.5 33 17 25 ];
+        %tmp.5 = getv %tmp.4 :position;
+        %tmp.6 = null;
+        %tmp.7 = eq %tmp.5 %tmp.6;
+        bf %tmp.7 @_home_miguel_test_garminGarage_source_GarageView_mc_33_8_36_8_if_end;
+_home_miguel_test_garminGarage_source_GarageView_mc_33_8_36_8_if_true:
+_home_miguel_test_garminGarage_source_GarageView_mc_33_34_36_8_start:
+[ "/home/miguel/test/garminGarage/source/GarageView.mc" 34 12 ]
+        symbol [ System %tmp.8 34 12 18 ];
+        %tmp.8 = getm $.Toybox.System;
+        symbol [ println %tmp.9 34 19 26 ];
+        %tmp.9 = getv function %tmp.8 :println;
+        %tmp.10 = "Esperando posicion...";
+        invoke %tmp.8 %tmp.9(%tmp.10);
+[ "/home/miguel/test/garminGarage/source/GarageView.mc" 35 12 ]
+        ret ?;
+_home_miguel_test_garminGarage_source_GarageView_mc_33_34_36_8_stop:
+        goto @_home_miguel_test_garminGarage_source_GarageView_mc_33_8_36_8_if_end;
+_home_miguel_test_garminGarage_source_GarageView_mc_33_8_36_8_if_end:
+[ "/home/miguel/test/garminGarage/source/GarageView.mc" 38 8 ]
+        [ "_home_miguel_test_garminGarage_source_GarageView_mc_31_53_45_4_start" "_home_miguel_test_garminGarage_source_GarageView_mc_31_53_45_4_stop" ]
+        %coords.1 = local;
+        symbol [ coords %coords.1 38 12 18 ];
+        %tmp.11 = lgetv %info;
+        symbol [ info %tmp.11 38 21 25 ];
+        symbol [ position %tmp.12 38 26 34 ];
+        %tmp.12 = getv %tmp.11 :position;
+        symbol [ toDegrees %tmp.13 38 35 44 ];
+        %tmp.13 = getv function %tmp.12 :toDegrees;
+        %tmp.14 = invoke %tmp.12 %tmp.13();
+        lputv %coords.1 %tmp.14;
+        symbol [ coords %coords.1 38 12 18 ];
+[ "/home/miguel/test/garminGarage/source/GarageView.mc" 39 8 ]
+        %tmp.15 = lgetv %coords.1;
+        symbol [ coords %tmp.15 39 14 20 ];
+        %tmp.16 = 0;
+        %tmp.17 = agetv %tmp.15 %tmp.16;
+        symbol [ lat ? 39 8 11 ];
+        putv self :lat %tmp.17;
+[ "/home/miguel/test/garminGarage/source/GarageView.mc" 40 8 ]
+        %tmp.18 = lgetv %coords.1;
+        symbol [ coords %tmp.18 40 14 20 ];
+        %tmp.19 = 1;
+        %tmp.20 = agetv %tmp.18 %tmp.19;
+        symbol [ lon ? 40 8 11 ];
+        putv self :lon %tmp.20;
+[ "/home/miguel/test/garminGarage/source/GarageView.mc" 42 8 ]
+        symbol [ System %tmp.21 42 8 14 ];
+        %tmp.21 = getm $.Toybox.System;
+        symbol [ println %tmp.22 42 15 22 ];
+        %tmp.22 = getv function %tmp.21 :println;
+        symbol [ lat %tmp.24 42 23 26 ];
+        %tmp.24 = getv ? :lat;
+        invoke %tmp.21 %tmp.22(%tmp.24);
+[ "/home/miguel/test/garminGarage/source/GarageView.mc" 43 8 ]
+        symbol [ System %tmp.25 43 8 14 ];
+        %tmp.25 = getm $.Toybox.System;
+        symbol [ println %tmp.26 43 15 22 ];
+        %tmp.26 = getv function %tmp.25 :println;
+        symbol [ lon %tmp.28 43 23 26 ];
+        %tmp.28 = getv ? :lon;
+        invoke %tmp.25 %tmp.26(%tmp.28);
+[ "/home/miguel/test/garminGarage/source/GarageView.mc" 44 8 ]
+        symbol [ WatchUi %tmp.29 44 8 15 ];
+        %tmp.29 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.30 44 16 29 ];
+        %tmp.30 = getv function %tmp.29 :requestUpdate;
+        invoke %tmp.29 %tmp.30();
+_home_miguel_test_garminGarage_source_GarageView_mc_31_53_45_4_stop:
+    }
+    [ @file = "/home/miguel/test/garminGarage/source/GarageView.mc"; @line = 48; @symbol_functiondef = [onUpdate,48,13,21]; @symbol_param<0> = [dc,48,22,24]; @symbol_param<0>_type<0> = [Dc,48,28,30]; ]
+    function onUpdate(dc as Dc) as Void {
+_home_miguel_test_garminGarage_source_GarageView_mc_48_40_52_4_start:
+[ "/home/miguel/test/garminGarage/source/GarageView.mc" 49 8 ]
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 49 8 10 ];
+        symbol [ setColor %tmp.2 49 11 19 ];
+        %tmp.2 = getv function %tmp.1 :setColor;
+        symbol [ Graphics %tmp.3 49 20 28 ];
+        %tmp.3 = getm $.Toybox.Graphics;
+        symbol [ COLOR_RED %tmp.4 49 29 38 ];
+        %tmp.4 = getv %tmp.3 :COLOR_RED;
+        symbol [ Graphics %tmp.5 49 40 48 ];
+        %tmp.5 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.6 49 49 60 ];
+        %tmp.6 = getv %tmp.5 :COLOR_BLACK;
+        invoke %tmp.1 %tmp.2(%tmp.4, %tmp.6);
+[ "/home/miguel/test/garminGarage/source/GarageView.mc" 50 4 ]
+        %tmp.7 = lgetv %dc;
+        symbol [ dc %tmp.7 50 4 6 ];
+        symbol [ fillCircle %tmp.8 50 7 17 ];
+        %tmp.8 = getv function %tmp.7 :fillCircle;
+        %tmp.9 = lgetv %dc;
+        symbol [ dc %tmp.9 50 18 20 ];
+        symbol [ getWidth %tmp.10 50 21 29 ];
+        %tmp.10 = getv function %tmp.9 :getWidth;
+        %tmp.11 = invoke %tmp.9 %tmp.10();
+        %tmp.12 = 2;
+        %tmp.13 = div %tmp.11 %tmp.12;
+        %tmp.14 = lgetv %dc;
+        symbol [ dc %tmp.14 50 35 37 ];
+        symbol [ getHeight %tmp.15 50 38 47 ];
+        %tmp.15 = getv function %tmp.14 :getHeight;
+        %tmp.16 = invoke %tmp.14 %tmp.15();
+        %tmp.17 = 2;
+        %tmp.18 = div %tmp.16 %tmp.17;
+        %tmp.19 = 100;
+        invoke %tmp.7 %tmp.8(%tmp.13, %tmp.18, %tmp.19);
+[ "/home/miguel/test/garminGarage/source/GarageView.mc" 51 4 ]
+        symbol [ System %tmp.20 51 4 10 ];
+        %tmp.20 = getm $.Toybox.System;
+        symbol [ println %tmp.21 51 11 18 ];
+        %tmp.21 = getv function %tmp.20 :println;
+        symbol [ Application %tmp.23 51 19 30 ];
+        %tmp.23 = getv ? :Application;
+        symbol [ Properties %tmp.24 51 31 41 ];
+        %tmp.24 = getv %tmp.23 :Properties;
+        symbol [ getValue %tmp.25 51 42 50 ];
+        %tmp.25 = getv function %tmp.24 :getValue;
+        %tmp.26 = "apiToken";
+        %tmp.27 = invoke %tmp.24 %tmp.25(%tmp.26);
+        invoke %tmp.20 %tmp.21(%tmp.27);
+_home_miguel_test_garminGarage_source_GarageView_mc_48_40_52_4_stop:
+    }
+    [ @file = "/home/miguel/test/garminGarage/source/GarageView.mc"; @line = 54; @symbol_functiondef = [onHide,54,13,19]; ]
+    function onHide() as Void {
+_home_miguel_test_garminGarage_source_GarageView_mc_54_30_59_4_start:
+[ "/home/miguel/test/garminGarage/source/GarageView.mc" 55 8 ]
+        symbol [ Position %tmp.1 55 8 16 ];
+        %tmp.1 = getm $.Toybox.Position;
+        symbol [ enableLocationEvents %tmp.2 55 17 37 ];
+        %tmp.2 = getv function %tmp.1 :enableLocationEvents;
+        symbol [ Position %tmp.3 56 12 20 ];
+        %tmp.3 = getm $.Toybox.Position;
+        symbol [ LOCATION_DISABLE %tmp.4 56 21 37 ];
+        %tmp.4 = getv %tmp.3 :LOCATION_DISABLE;
+        %tmp.5 = null;
+        invoke %tmp.1 %tmp.2(%tmp.4, %tmp.5);
+_home_miguel_test_garminGarage_source_GarageView_mc_54_30_59_4_stop:
+    }
+}
+[ @file = "/home/miguel/test/garminGarage/source/GarageView.mc"; @line = 1; ]
+<init> {
+}

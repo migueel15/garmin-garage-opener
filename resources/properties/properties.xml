@@ -1,0 +1,4 @@
+<properties>
+    <property id="backendUrl" type="string"></property>
+    <property id="apiToken" type="string"></property>
+</properties>

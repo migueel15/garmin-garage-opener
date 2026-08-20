@@ -1,0 +1,20 @@
+<settings>
+    <setting
+        propertyKey="@Properties.backendUrl"
+        title="@Strings.BackendUrl"
+        prompt="@Strings.BackendUrlPrompt">
+
+        <settingConfig
+            type="alphaNumeric"
+            required="true" />
+    </setting>
+    <setting
+        propertyKey="@Properties.apiToken"
+        title="@Strings.Token"
+        prompt="@Strings.TokenPrompt">
+
+        <settingConfig
+            type="password"
+            required="true" />
+    </setting>
+</settings>

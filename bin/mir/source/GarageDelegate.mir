@@ -1,0 +1,312 @@
+[ @file = "/home/miguel/test/garminGarage/source/GarageDelegate.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "/home/miguel/test/garminGarage/source/GarageDelegate.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [PersistedContent,2,14,30]; ]
+import Toybox.PersistedContent;
+[ @file = "/home/miguel/test/garminGarage/source/GarageDelegate.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [WatchUi,3,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "/home/miguel/test/garminGarage/source/GarageDelegate.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [System,4,14,20]; ]
+import Toybox.System;
+[ @file = "/home/miguel/test/garminGarage/source/GarageDelegate.mc"; @line = 5; @symbol_importdef<0> = [Toybox,5,7,13]; @symbol_importdef<1> = [Communications,5,14,28]; ]
+import Toybox.Communications;
+[ @file = "/home/miguel/test/garminGarage/source/GarageDelegate.mc"; @line = 7; @symbol_classdef = [GarageDelegate,7,6,20]; @symbol_extends<0> = [WatchUi,7,29,36]; @symbol_extends<1> = [BehaviorDelegate,7,37,53]; ]
+class GarageDelegate extends WatchUi.BehaviorDelegate {
+    [ @file = "/home/miguel/test/garminGarage/source/GarageDelegate.mc"; @line = 7; ]
+    <init> {
+    }
+    [ @file = "/home/miguel/test/garminGarage/source/GarageDelegate.mc"; @line = 7; ]
+    static
+    <init> {
+    }
+    [ @file = "/home/miguel/test/garminGarage/source/GarageDelegate.mc"; @line = 9; @symbol_functiondef = [initialize,9,13,23]; ]
+    function initialize() as Void {
+_home_miguel_test_garminGarage_source_GarageDelegate_mc_9_26_11_4_start:
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 10 8 ]
+        symbol [ BehaviorDelegate %tmp.2 10 8 24 ];
+        %tmp.2 = getv ? :BehaviorDelegate;
+        symbol [ initialize %tmp.3 10 25 35 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+_home_miguel_test_garminGarage_source_GarageDelegate_mc_9_26_11_4_stop:
+    }
+    [ @file = "/home/miguel/test/garminGarage/source/GarageDelegate.mc"; @line = 13; @symbol_functiondef = [onMenu,13,13,19]; @symbol_return<0> = [Lang,13,25,29]; @symbol_return<1> = [Boolean,13,30,37]; ]
+    function onMenu() as Lang.Boolean {
+_home_miguel_test_garminGarage_source_GarageDelegate_mc_13_38_21_4_start:
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 14 8 ]
+        symbol [ WatchUi %tmp.1 14 8 15 ];
+        %tmp.1 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.2 14 16 24 ];
+        %tmp.2 = getv function %tmp.1 :pushView;
+        symbol [ Rez %tmp.6 15 16 19 ];
+        %tmp.6 = getv ? :Rez;
+        symbol [ Menus %tmp.7 15 20 25 ];
+        %tmp.7 = getv %tmp.6 :Menus;
+        symbol [ MainMenu %tmp.8 15 26 34 ];
+        %tmp.8 = getv function ? %tmp.7 :MainMenu;
+        %tmp.3 = newc %tmp.8 ();
+        symbol [ GarageMenuDelegate %tmp.12 16 16 34 ];
+        %tmp.12 = getv ? :GarageMenuDelegate;
+        %tmp.9 = newc %tmp.12 ();
+        symbol [ WatchUi %tmp.13 17 12 19 ];
+        %tmp.13 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_UP %tmp.14 17 20 28 ];
+        %tmp.14 = getv %tmp.13 :SLIDE_UP;
+        invoke %tmp.1 %tmp.2(%tmp.3, %tmp.9, %tmp.14);
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 20 8 ]
+        %tmp.15 = true;
+        ret %tmp.15;
+_home_miguel_test_garminGarage_source_GarageDelegate_mc_13_38_21_4_stop:
+    }
+    [ @file = "/home/miguel/test/garminGarage/source/GarageDelegate.mc"; @line = 23; @symbol_functiondef = [onBack,23,13,19]; @symbol_return<0> = [Lang,23,25,29]; @symbol_return<1> = [Boolean,23,30,37]; ]
+    function onBack() as Lang.Boolean {
+_home_miguel_test_garminGarage_source_GarageDelegate_mc_23_38_26_4_start:
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 24 8 ]
+        symbol [ System %tmp.1 24 8 14 ];
+        %tmp.1 = getm $.Toybox.System;
+        symbol [ println %tmp.2 24 15 22 ];
+        %tmp.2 = getv function %tmp.1 :println;
+        %tmp.3 = "pulsado back";
+        invoke %tmp.1 %tmp.2(%tmp.3);
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 25 8 ]
+        %tmp.4 = false;
+        ret %tmp.4;
+_home_miguel_test_garminGarage_source_GarageDelegate_mc_23_38_26_4_stop:
+    }
+    [ @file = "/home/miguel/test/garminGarage/source/GarageDelegate.mc"; @line = 28; @symbol_functiondef = [onTap,28,13,18]; @symbol_param<0> = [event,28,19,24]; @symbol_param<0>_type<0> = [WatchUi,28,28,35]; @symbol_param<0>_type<1> = [ClickEvent,28,36,46]; @symbol_return<0> = [Lang,28,51,55]; @symbol_return<1> = [Boolean,28,56,63]; ]
+    function onTap(event as WatchUi.ClickEvent) as Lang.Boolean {
+_home_miguel_test_garminGarage_source_GarageDelegate_mc_28_64_50_4_start:
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 29 8 ]
+        [ "_home_miguel_test_garminGarage_source_GarageDelegate_mc_28_64_50_4_start" "_home_miguel_test_garminGarage_source_GarageDelegate_mc_28_64_50_4_stop" ]
+        %coords.1 = local;
+        symbol [ coords %coords.1 29 12 18 ];
+        %tmp.1 = lgetv %event;
+        symbol [ event %tmp.1 29 21 26 ];
+        symbol [ getCoordinates %tmp.2 29 27 41 ];
+        %tmp.2 = getv function %tmp.1 :getCoordinates;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %coords.1 %tmp.3;
+        symbol [ coords %coords.1 29 12 18 ];
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 31 8 ]
+        [ "_home_miguel_test_garminGarage_source_GarageDelegate_mc_28_64_50_4_start" "_home_miguel_test_garminGarage_source_GarageDelegate_mc_28_64_50_4_stop" ]
+        %x.2 = local;
+        symbol [ x %x.2 31 12 13 ];
+        %tmp.4 = lgetv %coords.1;
+        symbol [ coords %tmp.4 31 16 22 ];
+        %tmp.5 = 0;
+        %tmp.6 = agetv %tmp.4 %tmp.5;
+        lputv %x.2 %tmp.6;
+        symbol [ x %x.2 31 12 13 ];
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 32 8 ]
+        [ "_home_miguel_test_garminGarage_source_GarageDelegate_mc_28_64_50_4_start" "_home_miguel_test_garminGarage_source_GarageDelegate_mc_28_64_50_4_stop" ]
+        %y.3 = local;
+        symbol [ y %y.3 32 12 13 ];
+        %tmp.7 = lgetv %coords.1;
+        symbol [ coords %tmp.7 32 16 22 ];
+        %tmp.8 = 1;
+        %tmp.9 = agetv %tmp.7 %tmp.8;
+        lputv %y.3 %tmp.9;
+        symbol [ y %y.3 32 12 13 ];
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 34 8 ]
+        symbol [ System %tmp.10 34 8 14 ];
+        %tmp.10 = getm $.Toybox.System;
+        symbol [ println %tmp.11 34 15 22 ];
+        %tmp.11 = getv function %tmp.10 :println;
+        %tmp.12 = "Tap: ";
+        %tmp.13 = lgetv %x.2;
+        symbol [ x %tmp.13 34 33 34 ];
+        %tmp.14 = add %tmp.12 %tmp.13;
+        %tmp.15 = ", ";
+        %tmp.16 = add %tmp.14 %tmp.15;
+        %tmp.17 = lgetv %y.3;
+        symbol [ y %tmp.17 34 44 45 ];
+        %tmp.18 = add %tmp.16 %tmp.17;
+        invoke %tmp.10 %tmp.11(%tmp.18);
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 37 8 ]
+        [ "_home_miguel_test_garminGarage_source_GarageDelegate_mc_28_64_50_4_start" "_home_miguel_test_garminGarage_source_GarageDelegate_mc_28_64_50_4_stop" ]
+        %cx.4 = local;
+        symbol [ cx %cx.4 37 12 14 ];
+        %tmp.19 = 130;
+        lputv %cx.4 %tmp.19;
+        symbol [ cx %cx.4 37 12 14 ];
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 38 8 ]
+        [ "_home_miguel_test_garminGarage_source_GarageDelegate_mc_28_64_50_4_start" "_home_miguel_test_garminGarage_source_GarageDelegate_mc_28_64_50_4_stop" ]
+        %cy.5 = local;
+        symbol [ cy %cy.5 38 12 14 ];
+        %tmp.20 = 130;
+        lputv %cy.5 %tmp.20;
+        symbol [ cy %cy.5 38 12 14 ];
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 39 8 ]
+        [ "_home_miguel_test_garminGarage_source_GarageDelegate_mc_28_64_50_4_start" "_home_miguel_test_garminGarage_source_GarageDelegate_mc_28_64_50_4_stop" ]
+        %radius.6 = local;
+        symbol [ radius %radius.6 39 12 18 ];
+        %tmp.21 = 100;
+        lputv %radius.6 %tmp.21;
+        symbol [ radius %radius.6 39 12 18 ];
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 41 8 ]
+        [ "_home_miguel_test_garminGarage_source_GarageDelegate_mc_28_64_50_4_start" "_home_miguel_test_garminGarage_source_GarageDelegate_mc_28_64_50_4_stop" ]
+        %dx.7 = local;
+        symbol [ dx %dx.7 41 12 14 ];
+        %tmp.22 = lgetv %x.2;
+        symbol [ x %tmp.22 41 17 18 ];
+        %tmp.23 = lgetv %cx.4;
+        symbol [ cx %tmp.23 41 21 23 ];
+        %tmp.24 = sub %tmp.22 %tmp.23;
+        lputv %dx.7 %tmp.24;
+        symbol [ dx %dx.7 41 12 14 ];
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 42 8 ]
+        [ "_home_miguel_test_garminGarage_source_GarageDelegate_mc_28_64_50_4_start" "_home_miguel_test_garminGarage_source_GarageDelegate_mc_28_64_50_4_stop" ]
+        %dy.8 = local;
+        symbol [ dy %dy.8 42 12 14 ];
+        %tmp.25 = lgetv %y.3;
+        symbol [ y %tmp.25 42 17 18 ];
+        %tmp.26 = lgetv %cy.5;
+        symbol [ cy %tmp.26 42 21 23 ];
+        %tmp.27 = sub %tmp.25 %tmp.26;
+        lputv %dy.8 %tmp.27;
+        symbol [ dy %dy.8 42 12 14 ];
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 44 8 ]
+_home_miguel_test_garminGarage_source_GarageDelegate_mc_44_8_47_8_if_stmt:
+        %tmp.28 = lgetv %dx.7;
+        symbol [ dx %tmp.28 44 13 15 ];
+        %tmp.29 = lgetv %dx.7;
+        symbol [ dx %tmp.29 44 18 20 ];
+        %tmp.30 = mul %tmp.28 %tmp.29;
+        %tmp.31 = lgetv %dy.8;
+        symbol [ dy %tmp.31 44 23 25 ];
+        %tmp.32 = lgetv %dy.8;
+        symbol [ dy %tmp.32 44 28 30 ];
+        %tmp.33 = mul %tmp.31 %tmp.32;
+        %tmp.34 = add %tmp.30 %tmp.33;
+        %tmp.35 = lgetv %radius.6;
+        symbol [ radius %tmp.35 44 36 42 ];
+        %tmp.36 = lgetv %radius.6;
+        symbol [ radius %tmp.36 44 45 51 ];
+        %tmp.37 = mul %tmp.35 %tmp.36;
+        %tmp.38 = lte %tmp.34 %tmp.37;
+        bf %tmp.38 @_home_miguel_test_garminGarage_source_GarageDelegate_mc_44_8_47_8_if_end;
+_home_miguel_test_garminGarage_source_GarageDelegate_mc_44_8_47_8_if_true:
+_home_miguel_test_garminGarage_source_GarageDelegate_mc_44_54_47_8_start:
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 45 12 ]
+        %tmp.39 = self;
+        symbol [ pulseShelly %tmp.40 45 12 23 ];
+        %tmp.40 = getv function %tmp.39 :pulseShelly;
+        invoke %tmp.39 %tmp.40();
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 46 12 ]
+        %tmp.41 = true;
+        ret %tmp.41;
+_home_miguel_test_garminGarage_source_GarageDelegate_mc_44_54_47_8_stop:
+        goto @_home_miguel_test_garminGarage_source_GarageDelegate_mc_44_8_47_8_if_end;
+_home_miguel_test_garminGarage_source_GarageDelegate_mc_44_8_47_8_if_end:
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 49 8 ]
+        %tmp.42 = false;
+        ret %tmp.42;
+_home_miguel_test_garminGarage_source_GarageDelegate_mc_28_64_50_4_stop:
+    }
+    [ @file = "/home/miguel/test/garminGarage/source/GarageDelegate.mc"; @line = 52; @symbol_functiondef = [pulseShelly,52,13,24]; ]
+    function pulseShelly() as Void {
+_home_miguel_test_garminGarage_source_GarageDelegate_mc_52_35_70_4_start:
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 53 6 ]
+        symbol [ System %tmp.1 53 6 12 ];
+        %tmp.1 = getm $.Toybox.System;
+        symbol [ println %tmp.2 53 13 20 ];
+        %tmp.2 = getv function %tmp.1 :println;
+        %tmp.3 = "Mandando peticion...!";
+        invoke %tmp.1 %tmp.2(%tmp.3);
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 54 8 ]
+        [ "_home_miguel_test_garminGarage_source_GarageDelegate_mc_52_35_70_4_start" "_home_miguel_test_garminGarage_source_GarageDelegate_mc_52_35_70_4_stop" ]
+        %url.1 = local;
+        symbol [ url %url.1 54 12 15 ];
+        symbol [ Application %tmp.5 54 18 29 ];
+        %tmp.5 = getv ? :Application;
+        symbol [ Properties %tmp.6 54 30 40 ];
+        %tmp.6 = getv %tmp.5 :Properties;
+        symbol [ getValue %tmp.7 54 41 49 ];
+        %tmp.7 = getv function %tmp.6 :getValue;
+        %tmp.8 = "backendUrl";
+        %tmp.9 = invoke %tmp.6 %tmp.7(%tmp.8);
+        lputv %url.1 %tmp.9;
+        symbol [ url %url.1 54 12 15 ];
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 55 8 ]
+        [ "_home_miguel_test_garminGarage_source_GarageDelegate_mc_52_35_70_4_start" "_home_miguel_test_garminGarage_source_GarageDelegate_mc_52_35_70_4_stop" ]
+        %apiToken.2 = local;
+        symbol [ apiToken %apiToken.2 55 12 20 ];
+        symbol [ Application %tmp.11 55 23 34 ];
+        %tmp.11 = getv ? :Application;
+        symbol [ Properties %tmp.12 55 35 45 ];
+        %tmp.12 = getv %tmp.11 :Properties;
+        symbol [ getValue %tmp.13 55 46 54 ];
+        %tmp.13 = getv function %tmp.12 :getValue;
+        %tmp.14 = "apiToken";
+        %tmp.15 = invoke %tmp.12 %tmp.13(%tmp.14);
+        lputv %apiToken.2 %tmp.15;
+        symbol [ apiToken %apiToken.2 55 12 20 ];
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 57 8 ]
+        symbol [ Communications %tmp.16 57 8 22 ];
+        %tmp.16 = getm $.Toybox.Communications;
+        symbol [ makeWebRequest %tmp.17 57 23 37 ];
+        %tmp.17 = getv function %tmp.16 :makeWebRequest;
+        %tmp.18 = lgetv %url.1;
+        symbol [ url %tmp.18 58 12 15 ];
+        %tmp.19 = newd 0;
+        %tmp.20 = newd 2;
+        %tmp.22 = const :method;
+        symbol [ method %tmp.22 62 17 23 const ];
+        symbol [ Communications %tmp.23 62 27 41 ];
+        %tmp.23 = getm $.Toybox.Communications;
+        symbol [ HTTP_REQUEST_METHOD_GET %tmp.24 62 42 65 ];
+        %tmp.24 = getv %tmp.23 :HTTP_REQUEST_METHOD_GET;
+        %tmp.25 = dup %tmp.20;
+        %tmp.26 = aputv %tmp.25 %tmp.22 %tmp.24;
+        %tmp.28 = const :headers;
+        symbol [ headers %tmp.28 63 17 24 const ];
+        %tmp.29 = newd 2;
+        %tmp.30 = "Authorization";
+        %tmp.31 = "Bearer ";
+        %tmp.32 = lgetv %apiToken.2;
+        symbol [ apiToken %tmp.32 64 51 59 ];
+        %tmp.33 = add %tmp.31 %tmp.32;
+        %tmp.34 = dup %tmp.29;
+        %tmp.35 = aputv %tmp.34 %tmp.30 %tmp.33;
+        %tmp.36 = "Accept";
+        %tmp.37 = "application/json";
+        %tmp.38 = dup %tmp.35;
+        %tmp.39 = aputv %tmp.38 %tmp.36 %tmp.37;
+        %tmp.40 = dup %tmp.26;
+        %tmp.41 = aputv %tmp.40 %tmp.28 %tmp.39;
+        %tmp.42 = self;
+        symbol [ method %tmp.43 68 12 18 ];
+        %tmp.43 = getv function %tmp.42 :method;
+        %tmp.45 = const :onResponse;
+        symbol [ onResponse %tmp.45 68 20 30 const ];
+        %tmp.46 = invoke %tmp.42 %tmp.43(%tmp.45);
+        invoke %tmp.16 %tmp.17(%tmp.18, %tmp.19, %tmp.41, %tmp.46);
+_home_miguel_test_garminGarage_source_GarageDelegate_mc_52_35_70_4_stop:
+    }
+    [ @file = "/home/miguel/test/garminGarage/source/GarageDelegate.mc"; @line = 72; @symbol_functiondef = [onResponse,72,13,23]; @symbol_param<0> = [responseCode,73,2,14]; @symbol_param<0>_type<0> = [Lang,73,18,22]; @symbol_param<0>_type<1> = [Number,73,23,29]; @symbol_param<1> = [data,74,2,6]; @symbol_param<1>_type<0> = [Lang,74,18,22]; @symbol_param<1>_type<1> = [Dictionary,74,23,33]; @symbol_param<1>_type<2> = [Lang,74,37,41]; @symbol_param<1>_type<3> = [String,74,42,48]; @symbol_param<1>_type<4> = [PersistedContent,74,52,68]; @symbol_param<1>_type<5> = [Iterator,74,69,77]; ]
+    function onResponse(responseCode as Lang.Number, data as Null or Lang.Dictionary or Lang.String or PersistedContent.Iterator) as Void {
+_home_miguel_test_garminGarage_source_GarageDelegate_mc_75_12_78_4_start:
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 76 8 ]
+        symbol [ System %tmp.1 76 8 14 ];
+        %tmp.1 = getm $.Toybox.System;
+        symbol [ println %tmp.2 76 15 22 ];
+        %tmp.2 = getv function %tmp.1 :println;
+        %tmp.3 = "HTTP code: ";
+        %tmp.4 = lgetv %responseCode;
+        symbol [ responseCode %tmp.4 76 39 51 ];
+        %tmp.5 = add %tmp.3 %tmp.4;
+        invoke %tmp.1 %tmp.2(%tmp.5);
+[ "/home/miguel/test/garminGarage/source/GarageDelegate.mc" 77 8 ]
+        symbol [ System %tmp.6 77 8 14 ];
+        %tmp.6 = getm $.Toybox.System;
+        symbol [ println %tmp.7 77 15 22 ];
+        %tmp.7 = getv function %tmp.6 :println;
+        %tmp.8 = "Response: ";
+        %tmp.9 = lgetv %data;
+        symbol [ data %tmp.9 77 38 42 ];
+        %tmp.10 = add %tmp.8 %tmp.9;
+        invoke %tmp.6 %tmp.7(%tmp.10);
+_home_miguel_test_garminGarage_source_GarageDelegate_mc_75_12_78_4_stop:
+    }
+}
+[ @file = "/home/miguel/test/garminGarage/source/GarageDelegate.mc"; @line = 1; ]
+<init> {
+}
