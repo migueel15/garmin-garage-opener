@@ -33,12 +33,9 @@
   "supportsLiveValidation" : false,
   "languages" : {
     "valyrian" : {
-      "TokenPrompt" : "Inserta un token de acceso.",
-      "menu_label_1" : "Item 1",
       "BackendUrl" : "Endpoint",
-      "menu_label_2" : "Item 2",
+      "TokenPrompt" : "Inserta un token de acceso.",
       "Token" : "Token",
-      "prompt" : "Click the menu button",
       "AppName" : "Garage",
       "BackendUrlPrompt" : "Inserta un endpoint."
     }

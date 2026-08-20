@@ -1,5 +1,4 @@
 import Toybox.Application;
-import Toybox.Lang;
 import Toybox.WatchUi;
 
 class GarageApp extends Application.AppBase {
@@ -8,21 +7,8 @@ class GarageApp extends Application.AppBase {
         AppBase.initialize();
     }
 
-    // onStart() is called on application start up
-    function onStart(state as Dictionary?) as Void {
-    }
-
-    // onStop() is called when your application is exiting
-    function onStop(state as Dictionary?) as Void {
-    }
-
-    // Return the initial view of your application here
     function getInitialView() as [Views] or [Views, InputDelegates] {
-        return [ new GarageView(), new GarageDelegate() ];
+        var view = new GarageView();
+        return [ view, new GarageDelegate(view) ];
     }
-
-}
-
-function getApp() as GarageApp {
-    return Application.getApp() as GarageApp;
 }
