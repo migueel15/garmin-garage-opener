@@ -39,25 +39,25 @@ class GarageView extends WatchUi.View {
 
         var state = isSleeping() ? GARAGE_STATE_SLEEP : _state;
         var accent = 0x35D0FF;
-        var title = "ABRIR GARAJE";
+        var title = "ACTIVAR";
         var subtitle = "";
 
         if (state == GARAGE_STATE_HOLDING) {
             accent = 0xFFB547;
-            title = "SIGUE PULSANDO";
-            subtitle = "No sueltes el boton";
+            title = "ACTIVAR";
+            subtitle = "";
         } else if (state == GARAGE_STATE_SENDING) {
             accent = 0x5C8DFF;
             title = "ENVIANDO";
-            subtitle = "Contactando con el garaje";
+            subtitle = "";
         } else if (state == GARAGE_STATE_SUCCESS) {
             accent = 0x55DB9B;
-            title = "PUERTA ACTIVADA";
-            subtitle = "Peticion recibida";
+            title = "ACTIVADA";
+            subtitle = "";
         } else if (state == GARAGE_STATE_ERROR) {
             accent = 0xFF667A;
-            title = "NO SE PUDO ABRIR";
-            subtitle = "Comprueba la conexion";
+            title = "ERROR";
+            subtitle = "";
         } else if (state == GARAGE_STATE_SLEEP) {
             accent = 0x778694;
             title = "MODO DORMIR";
