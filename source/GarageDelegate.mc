@@ -167,17 +167,17 @@ class GarageDelegate extends WatchUi.BehaviorDelegate {
     }
 
 		function onMenu() as Boolean {
-			toggleMenu();
+			toggleMenu(true);
 			return true;
 		}
 
 		function onActionMenu() as Boolean {
 			cancelHold();
-			toggleMenu();
+			toggleMenu(false);
 			return true;
 		}
 
-		function toggleMenu() {
+		function toggleMenu(isMenu) {
 			var menu = new Rez.Menus.SettingsMenu();
 			var idx = menu.findItemById(:block_sleep_hours);
 			var toggleItem = menu.getItem(idx) as WatchUi.ToggleMenuItem;
@@ -198,10 +198,12 @@ class GarageDelegate extends WatchUi.BehaviorDelegate {
 
 			toggleItem.setEnabled(isEnabled);
 
+			var animation = isMenu ? WatchUi.SLIDE_UP : WatchUi.SLIDE_LEFT;
+
 			WatchUi.pushView(
 				menu,
 				new SettingsMenuDelegate(),
-				WatchUi.SLIDE_UP
+				animation
 			);
 		}
 
