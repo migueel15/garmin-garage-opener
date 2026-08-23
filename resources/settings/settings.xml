@@ -15,6 +15,6 @@
 
         <settingConfig
             type="password"
-            required="true" />
+            required="false" />
     </setting>
 </settings>

@@ -104,15 +104,26 @@ class GarageDelegate extends WatchUi.BehaviorDelegate {
         var url = Application.Properties.getValue("backendUrl");
         var apiToken = Application.Properties.getValue("apiToken");
 
-        if (!(url instanceof Lang.String) || url.length() == 0 ||
-            !(apiToken instanceof Lang.String) || apiToken.length() == 0) {
-            handleError("Falta URL o token");
+        if (!(url instanceof Lang.String) || url.length() == 0) {
+            handleError("Falta URL");
             return;
         }
+
 
         _requestInProgress = true;
         _view.setState(GARAGE_STATE_SENDING);
         System.println("[GARAGE] makeWebRequest: mandando GET al garaje");
+
+				var headers = !(apiToken instanceof Lang.String) || apiToken.length() == 0 ? 
+				{
+					"Accept" => "application/json"
+				}
+				: 
+				{
+					"Authorization" => "Bearer " + apiToken,
+					"Accept" => "application/json"
+				};
+
 
         Communications.makeWebRequest(
             url,
@@ -120,11 +131,8 @@ class GarageDelegate extends WatchUi.BehaviorDelegate {
             },
             {
                 :method => Communications.HTTP_REQUEST_METHOD_GET,
-                :headers => {
-                    "Authorization" => "Bearer " + apiToken,
-                    "Accept" => "application/json"
-                }
-            },
+                :headers => headers
+						},
             method(:onResponse)
         );
     }
