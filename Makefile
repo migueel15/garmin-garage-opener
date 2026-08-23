@@ -3,7 +3,8 @@ MONKEYC := $(SDK)/bin/monkeyc
 MONKEYDO := $(SDK)/bin/monkeydo
 SIMULATOR := $(SDK)/bin/connectiq
 
-DEVICE := fr955
+# DEVICE := fr955
+DEVICE := vivoactive6
 PROJECT := Garage
 OUTPUT := bin/$(PROJECT).prg
 JUNGLE := monkey.jungle

@@ -6,12 +6,12 @@ import Toybox.PersistedContent;
 import Toybox.System;
 import Toybox.Timer;
 import Toybox.WatchUi;
+using Toybox.Time;
+using Toybox.Time.Gregorian;
 
 class GarageDelegate extends WatchUi.BehaviorDelegate {
 
-    private const HOLD_TIME_MS = 1500;
-    // Garmin genera onHold tras aproximadamente un segundo de pulsacion.
-    private const TOUCH_HOLD_REMAINDER_MS = 500;
+    private const HOLD_TIME_MS = 1000;
 
     private var _view as GarageView;
     private var _holdTimer as Timer.Timer = new Timer.Timer();
@@ -31,37 +31,17 @@ class GarageDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
-    function onHold(event as WatchUi.ClickEvent) as Lang.Boolean {
-        if (!_view.isInsideButton(event.getCoordinates())) {
-            return false;
-        }
-
-        beginHold(TOUCH_HOLD_REMAINDER_MS);
-        return true;
-    }
-
-    function onRelease(event as WatchUi.ClickEvent) as Lang.Boolean {
-        cancelHold();
-        return true;
-    }
-
-    function onKeyPressed(event as WatchUi.KeyEvent) as Lang.Boolean {
-        if (event.getKey() != WatchUi.KEY_ENTER) {
-            return false;
-        }
-
+		function onSelectable(event as SelectableEvent) as Boolean {
+			var s = event.getInstance();
+			if (s.getState() == :stateHighlighted) {
         beginHold(HOLD_TIME_MS);
-        return true;
-    }
+			}
 
-    function onKeyReleased(event as WatchUi.KeyEvent) as Lang.Boolean {
-        if (event.getKey() != WatchUi.KEY_ENTER) {
-            return false;
-        }
-
-        cancelHold();
-        return true;
-    }
+			if (s.getState() == :stateDefault){
+				cancelHold();
+			}
+			return true;
+		}
 
     function beginHold(delayMs as Number) as Void {
         if (_requestInProgress || _holding) {
@@ -106,6 +86,20 @@ class GarageDelegate extends WatchUi.BehaviorDelegate {
             _view.setState(GARAGE_STATE_SLEEP);
             return;
         }
+
+				// comprobar que no este en rango
+				var isTimeRangeToggled = Application.Storage.getValue("block_sleep_hours") as Boolean;
+				var openTime = Application.Storage.getValue("start_time") as String;
+				var closeTime = Application.Storage.getValue("end_time") as String;
+
+				System.println(isTimeRangeToggled);
+				System.println(openTime);
+				System.println(closeTime);
+
+				if (isTimeRangeToggled && isInsideTimeRange(openTime,closeTime)){
+          _view.setState(GARAGE_STATE_SLEEP);
+					return;
+				}
 
         var url = Application.Properties.getValue("backendUrl");
         var apiToken = Application.Properties.getValue("apiToken");
@@ -171,4 +165,73 @@ class GarageDelegate extends WatchUi.BehaviorDelegate {
             ]);
         }
     }
+
+		function onMenu() as Boolean {
+			toggleMenu();
+			return true;
+		}
+
+		function onActionMenu() as Boolean {
+			cancelHold();
+			toggleMenu();
+			return true;
+		}
+
+		function toggleMenu() {
+			var menu = new Rez.Menus.SettingsMenu();
+			var idx = menu.findItemById(:block_sleep_hours);
+			var toggleItem = menu.getItem(idx) as WatchUi.ToggleMenuItem;
+
+			var isEnabled = Application.Storage.getValue("block_sleep_hours");
+		 	if (isEnabled == null) {
+				isEnabled = false;
+			}
+
+			var start_time = Application.Storage.getValue("start_time");
+			var end_time = Application.Storage.getValue("end_time");
+
+			var startTimeItem =  menu.getItem(menu.findItemById(:start_time)) as WatchUi.MenuItem;
+			var endTimeItem =  menu.getItem(menu.findItemById(:end_time)) as WatchUi.MenuItem;
+
+			startTimeItem.setSubLabel(start_time);
+			endTimeItem.setSubLabel(end_time);
+
+			toggleItem.setEnabled(isEnabled);
+
+			WatchUi.pushView(
+				menu,
+				new SettingsMenuDelegate(),
+				WatchUi.SLIDE_UP
+			);
+		}
+
+function timeToMinutes(time as String) as Number {
+    var separator = time.find(":");
+
+    var hour = time.substring(0, separator).toNumber();
+    var minute = time.substring(separator + 1, time.length()).toNumber();
+
+    return hour * 60 + minute;
+}
+
+
+function isInsideTimeRange(openTime, closeTime) {
+    var now = Gregorian.info(
+        Time.now(),
+        Time.FORMAT_SHORT
+    );
+
+		var start = timeToMinutes(openTime);
+		var end = timeToMinutes(closeTime);
+    var current = now.hour * 60 + now.min;
+
+    // Ejemplo: 08:00 -> 20:00
+    if (start <= end) {
+        return current >= start && current < end;
+    }
+
+    // Ejemplo: 23:00 -> 08:00
+    // El rango cruza medianoche
+    return current >= start || current < end;
+}
 }

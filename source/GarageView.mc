@@ -16,15 +16,34 @@ class GarageView extends WatchUi.View {
     private var _buttonCenterX as Number = 0;
     private var _buttonCenterY as Number = 0;
     private var _buttonRadius as Number = 0;
+		var area;
+
 
     function initialize() {
         View.initialize();
+
+				if(View has :setActionMenuIndicator){
+					View.setActionMenuIndicator({
+						:enabled => true
+					});
+				}
     }
 
     function onLayout(dc as Dc) as Void {
         _buttonCenterX = dc.getWidth() / 2;
         _buttonCenterY = dc.getHeight() / 2;
         _buttonRadius = dc.getWidth() * 34 / 100 + 8;
+				var area = new WatchUi.Selectable({
+						:locX => _buttonCenterX - _buttonRadius,
+						:locY => _buttonCenterY - _buttonRadius,
+						:width => _buttonRadius*2,
+						:height => _buttonRadius*2,
+						:stateDefault => Graphics.COLOR_TRANSPARENT,
+						:stateHighlighted => Graphics.COLOR_TRANSPARENT,
+						:stateSelected => Graphics.COLOR_TRANSPARENT,
+						:identifier => :garageButton
+				});
+				setLayout([area]);
     }
 
     function onUpdate(dc as Dc) as Void {

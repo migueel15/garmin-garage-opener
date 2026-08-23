@@ -1,0 +1,23 @@
+<resources>
+    <menu2 id="SettingsMenu" title="Ajustes">
+
+        <toggle-menu-item
+            id="block_sleep_hours"
+            label="Bloquear en franja."
+            checked="true"
+        />
+
+        <menu-item
+            id="start_time"
+            label="Hora inicio"
+            subLabel="23:00"
+        />
+
+        <menu-item
+            id="end_time"
+            label="Hora cierre"
+            subLabel="08:00"
+        />
+
+    </menu2>
+</resources>

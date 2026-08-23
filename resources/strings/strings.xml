@@ -7,4 +7,7 @@
 
     <string id="BackendUrl">Endpoint</string>
     <string id="BackendUrlPrompt">Inserta un endpoint.</string>
+
+    <string id="am">AM</string>
+    <string id="pm">PM</string>
 </strings>
