@@ -9,6 +9,7 @@ const GARAGE_STATE_SENDING = 2;
 const GARAGE_STATE_SUCCESS = 3;
 const GARAGE_STATE_ERROR = 4;
 const GARAGE_STATE_SLEEP = 5;
+const GARAGE_STATE_TOUCH_DISABLED = 6;
 
 class GarageView extends WatchUi.View {
 
@@ -56,7 +57,15 @@ class GarageView extends WatchUi.View {
         dc.setColor(0x071019, 0x071019);
         dc.clear();
 
+				var settings = System.getDeviceSettings();
         var state = isSleeping() ? GARAGE_STATE_SLEEP : _state;
+
+				var touchEnabled = settings.isTouchScreen;
+
+				if (!touchEnabled) {
+					state = GARAGE_STATE_TOUCH_DISABLED;
+				}
+
         var accent = 0x35D0FF;
         var title = "ACTIVAR";
         var subtitle = "";
@@ -81,7 +90,11 @@ class GarageView extends WatchUi.View {
             accent = 0x778694;
             title = "MODO DORMIR";
             subtitle = "Control desactivado";
-        }
+        } else if (state == GARAGE_STATE_TOUCH_DISABLED) {
+            accent = 0x778694;
+            title = "SIN TACTIL";
+            subtitle = "Control desactivado";
+				}
 
         // Fondo suave para separar el control del borde de la pantalla.
         dc.setColor(0x0A1823, Graphics.COLOR_TRANSPARENT);
