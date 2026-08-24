@@ -142,6 +142,7 @@ class GarageDelegate extends WatchUi.BehaviorDelegate {
         data as Null or Lang.Dictionary or Lang.String or PersistedContent.Iterator
         ) as Void {
         System.println("[GARAGE] Respuesta HTTP: " + responseCode);
+				System.println("[GARAGE] Response data: " + data);
 
         _requestInProgress = false;
         if (responseCode >= 200 && responseCode < 300) {
